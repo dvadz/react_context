@@ -1,6 +1,6 @@
 import React from "react";
 import UserCreate from "./UserCreate";
-import LanguageContext from "../contexts/LanguageContext";
+import { LanguageStore } from "../contexts/LanguageContext";
 import LanguageSelector from "./LanguageSelector";
 
 class App extends React.Component {
@@ -13,10 +13,10 @@ class App extends React.Component {
   render() {
     return (
       <div className='ui container'>
-        <LanguageSelector onLanguageChange={this.onLanguageChange} />
-        <LanguageContext.Provider value={this.state.language}>
+        <LanguageStore>
+          <LanguageSelector onLanguageChange={this.onLanguageChange} />
           <UserCreate />
-        </LanguageContext.Provider>
+        </LanguageStore>
       </div>
     );
   }
